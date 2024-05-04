@@ -1,11 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { Text, View } from 'react-native';
+import AppNavigation from './src/navigation';
 
 export default function App() {
   return (
-    <View className='flex-1 bg-accent-amber-400' >
-      <Text >Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AppNavigation/>
   );
 }
