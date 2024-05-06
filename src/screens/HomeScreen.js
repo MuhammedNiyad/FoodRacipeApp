@@ -1,14 +1,49 @@
-import { View, ScrollView, Image, Text, TextInput } from 'react-native'
-import React from 'react'
-import { StatusBar } from 'expo-status-bar'
+import axios from 'axios';
+import { StatusBar } from 'expo-status-bar';
+import React, { useEffect, useState } from 'react';
+import { Image, ScrollView, Text, TextInput, View } from 'react-native';
+import { BellIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
+  heightPercentageToDP as hp
 } from "react-native-responsive-screen";
-import {BellIcon, MagnifyingGlassIcon} from 'react-native-heroicons/outline'
 import Categories from '../components/categories';
+import Racipes from '../components/racipes';
+import { categoryData } from '../constants';
 
 const HomeScreen = () => {
+
+  const [activeCategory, setActiveCategory] = useState('Beef');
+  const [CategoriesData, setCategoriesData] = useState([]);
+  const [racipeData, setRacipeData] = useState([]);
+
+  useEffect(()=>{
+    getCategories();
+    getRecipe();
+  },[])
+
+  const getCategories = async ()=>{
+    try {
+      const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php');
+      // console.log('Categories Data:', response.data);
+      if(response && response.data){
+        setCategoriesData(response.data.categories);
+      }
+    } catch (error) {
+      console.log('error: ', error.message);
+    }
+  }
+  const getRecipe = async (category='beef')=>{
+    try {
+      const response = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+      // console.log('Categories Data:', response.data);
+      if(response && response.data){
+        setRacipeData(response.data.meals);
+      }
+    } catch (error) {
+      console.log('error: ', error.message);
+    }
+  }
+
   return (
     <View>
       <StatusBar style="dark" />
@@ -61,7 +96,12 @@ const HomeScreen = () => {
 
         {/* categories */}
         <View>
-          <Categories/>
+          <Categories categories={CategoriesData} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+        </View>
+
+        {/* racipes */}
+        <View>
+          <Racipes racipeData={racipeData} categories={categoryData}/>
         </View>
       </ScrollView>
     </View>

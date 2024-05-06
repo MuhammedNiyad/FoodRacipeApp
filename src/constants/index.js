@@ -5,12 +5,12 @@ export const categoryData = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSy3mGQSelJhgejCMsr56C7euf-bucbAOvTA&usqp=CAU",
 	},
   {
-    name: "Starter",
+    name: "Beef",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSy3mGQSelJhgejCMsr56C7euf-bucbAOvTA&usqp=CAU",
 	},
   {
-    name: "Starter",
+    name: "Desert",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSy3mGQSelJhgejCMsr56C7euf-bucbAOvTA&usqp=CAU",
 	},
