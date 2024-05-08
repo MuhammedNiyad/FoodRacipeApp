@@ -4,9 +4,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Animated,{ FadeInDown, FadeOut } from 'react-native-reanimated';
+import Animated, { FadeInDown, FadeOut } from "react-native-reanimated";
+import { CachedImage } from "../helpers/image";
 
-const Categories = ({categories, activeCategory, setActiveCategory}) => {
+const Categories = ({ categories, activeCategory, handleChangeCategory }) => {
   return (
     <Animated.View entering={FadeInDown.duration(500).springify()}>
       <ScrollView
@@ -17,19 +18,29 @@ const Categories = ({categories, activeCategory, setActiveCategory}) => {
       >
         {categories.map((cate, ind) => {
           let isActive = cate.strCategory == activeCategory;
-          let activeButtonClass = isActive? 'bg-amber-400' : 'bg-black/10'
-        return(
-          <TouchableOpacity key={ind} onPress={()=>setActiveCategory(cate.strCategory)} className="flex items-center space-y-1">
-            <View className={`rounded-full p-[6px] ${activeButtonClass}`}>
-              <Image
+          let activeButtonClass = isActive ? "bg-amber-400" : "bg-black/10";
+          return (
+            <TouchableOpacity
+              key={ind}
+              onPress={() => handleChangeCategory(cate.strCategory)}
+              className="flex items-center space-y-1"
+            >
+              <View className={`rounded-full p-[6px] ${activeButtonClass}`}>
+                {/* <Image
                 source={{ uri: cate.strCategoryThumb }}
                 style={{ width: hp(6), height: hp(6) }}
                 className="rounded-full"
-              />
-				</View>
-				<Text className="text-neutral-600" style={{ fontSize: hp(1.6) }}>{cate.strCategory}</Text>
-          </TouchableOpacity>
-        )})}
+              /> */}
+              <CachedImage  uri={cate.strCategoryThumb}
+                style={{ width: hp(6), height: hp(6) }}
+                className="rounded-full" />
+              </View>
+              <Text className="text-neutral-600" style={{ fontSize: hp(1.6) }}>
+                {cate.strCategory}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
     </Animated.View>
   );
