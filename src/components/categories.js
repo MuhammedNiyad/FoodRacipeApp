@@ -26,14 +26,14 @@ const Categories = ({ categories, activeCategory, handleChangeCategory }) => {
               className="flex items-center space-y-1"
             >
               <View className={`rounded-full p-[6px] ${activeButtonClass}`}>
-                {/* <Image
+                <Image
                 source={{ uri: cate.strCategoryThumb }}
                 style={{ width: hp(6), height: hp(6) }}
                 className="rounded-full"
-              /> */}
-              <CachedImage  uri={cate.strCategoryThumb}
+              />
+              {/* <CachedImage  uri={cate.strCategoryThumb}
                 style={{ width: hp(6), height: hp(6) }}
-                className="rounded-full" />
+                className="rounded-full" /> */}
               </View>
               <Text className="text-neutral-600" style={{ fontSize: hp(1.6) }}>
                 {cate.strCategory}

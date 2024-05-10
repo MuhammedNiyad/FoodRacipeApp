@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "FoodRacipeApp",
-    "slug": "FoodRacipeApp",
+    "name": "Foody App",
+    "slug": "Foody-app",
+    "discription":"This is a Food racipe app. You can find various food racipes in this app. and also it's ingredian, instructions and making video too!",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/foodracipelogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/justloading.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,12 +20,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/healthfood.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/foodracipelogo.png"
     }
   }
 }
